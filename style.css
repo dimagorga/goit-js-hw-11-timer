@@ -1,0 +1,36 @@
+body{
+    height: 100%;
+    background-image: url(https://i.gifer.com/Dv9E.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.main-title{
+    text-align: center;
+    color: #f7f7f7;
+    margin-top: 200px;
+    font-size: 60px
+}
+.timer {
+    position: absolute;
+    display: flex;
+    text-align: center;    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #f7f7f7;
+    
+  }
+  .field{
+     margin-right: 20px; 
+  }
+  
+  .value {    
+    font-size: 90px;
+    padding: 8px;
+  }
+  
+  .label {
+    display: block;    
+    font-size: 15px;
+    
+  }
