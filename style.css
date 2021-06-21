@@ -5,10 +5,13 @@ body{
     background-repeat: no-repeat;
 }
 .main-title{
+  padding-top: 170px;
     text-align: center;
-    color: #f7f7f7;
-    margin-top: 200px;
-    font-size: 60px
+    color: #f7f7f7;    
+    font-size: 50px;
+    line-height: 44px;
+    letter-spacing: 0.04em;
+    
 }
 .timer {
     position: absolute;
