@@ -3,21 +3,29 @@ const daysRef = document.querySelector('[data-value="days"]');
 const hoursRef = document.querySelector('[data-value="hours"]');
 const minsRef = document.querySelector('[data-value="mins"]');
 const secsRef = document.querySelector('[data-value="secs"]');
+const titleRef = document.querySelector('.main-title')
 
 class Timer {
-    constructor({onTick}){
+    constructor({onTick, onStop}){
         this.timerId = null;
         this.onTick = onTick;
+        this.onStop = onStop;
     }
 
     timerId = setInterval(() => {
         const currentTime = Date.now();
-        const targetDate = new Date('Jan 01, 2022').getTime();
+        const targetDate = new Date('2022, Jan, 01').getTime();
         const deltatime = targetDate - currentTime;
         const time = this.timerComponents(deltatime)
-        
-        updateClockFace(time)
+        if(currentTime < targetDate){
+            updateClockFace(time)
+        }else{
+            clearInterval(this.timerId)
+            clockFaceAfterStop()
+            titleRef.textContent = 'С НОВЫМ ГОДОМ!'
+        }        
     }, 1000);
+        
 
     timerComponents(time){
         const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
@@ -38,6 +46,7 @@ class Timer {
 
 const timer = new Timer({
     onTick: updateClockFace,
+    onStop: clockFaceAfterStop,
 })
 
 
@@ -46,4 +55,10 @@ function updateClockFace({days, hours, mins, secs}){
     hoursRef.textContent =  `${hours}`;
     minsRef.textContent =  `${mins}`
     secsRef.textContent = `${secs}`
+}
+function clockFaceAfterStop(){
+    daysRef.textContent = '00';
+    hoursRef.textContent =  '00';
+    minsRef.textContent =  '00'
+    secsRef.textContent = '00'
 }
